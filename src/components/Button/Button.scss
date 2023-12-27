@@ -1,0 +1,20 @@
+// Button.scss
+.button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: #43A047;
+    }
+  
+    &.secondary {
+      background-color: transparent;
+      color: #4CAF50;
+      border: 1px solid #4CAF50;
+    }
+  }
+  
