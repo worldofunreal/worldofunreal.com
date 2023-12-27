@@ -43,7 +43,7 @@ jobs:
           rsync -avz -e "ssh -i $SSH_DIR/deploy_key" \
             --exclude='.git/*' \
             --exclude='node_modules/*' \
-            ./ $SERVER_USER@$SERVER_IP:/var/www/cosmicrafts.com
+            ./ $SERVER_USER@$SERVER_IP:/var/www/worldofunreal.com
 
           # Post-Deployment Commands (e.g., restart Apache)
           ssh -i $SSH_DIR/deploy_key $SERVER_USER@$SERVER_IP "sudo systemctl restart apache2"
