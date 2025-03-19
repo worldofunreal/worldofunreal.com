@@ -12,7 +12,6 @@
       <div class="navigation-menu">
         <router-link to="/" class="nav-link">Home</router-link>
         <router-link to="/services" class="nav-link">Services</router-link>
-        <router-link to="/blog" class="nav-link">Blog</router-link>
         <router-link to="/theme-demo" class="nav-link">Theme Demo</router-link>
         <router-link to="/style-guide" class="nav-link">Style Guide</router-link>
         <a href="https://twitter.com/worldofunreal" target="_blank" class="nav-link">

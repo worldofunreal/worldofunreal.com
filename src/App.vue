@@ -1,11 +1,6 @@
 // src/App.vue
 <template>
   <div :data-theme="theme" class="app">
-    <!-- Mobile Header -->
-    <MobileHeader v-if="isMobile" />
-    <!-- Desktop Header -->
-    <Header v-else />
-    
     <main class="main-content">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -13,11 +8,7 @@
         </transition>
       </router-view>
     </main>
-    
-    <!-- Mobile Footer -->
-    <MobileFooter v-if="isMobile" />
-    <!-- Desktop Footer -->
-    <Footer v-else />
+    <component :is="isMobileView ? 'MobileFooter' : 'Footer'" />
   </div>
 </template>
 
@@ -28,23 +19,24 @@ import Footer from './components/Footer.vue';
 import MobileHeader from './components/MobileHeader.vue';
 import MobileFooter from './components/MobileFooter.vue';
 import useTheme from './utils/useTheme';
-import useDevice from './utils/useDevice';
 
-const { theme, toggleTheme } = useTheme();
-const { isMobile } = useDevice();
+const { enabled } = useTheme();
+const theme = computed(() => enabled.value ? 'dark' : 'light');
 
-// Handle window resize for device detection
-const handleResize = () => {
-  // Force router to re-evaluate mobile status
-  router.go(0);
+// Mobile detection
+const isMobileView = ref(false);
+
+const checkIfMobile = () => {
+  isMobileView.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
 };
 
 onMounted(() => {
-  window.addEventListener('resize', handleResize);
+  checkIfMobile();
+  window.addEventListener('resize', checkIfMobile);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('resize', handleResize);
+  window.removeEventListener('resize', checkIfMobile);
 });
 </script>
 
@@ -215,64 +207,5 @@ h1, h2, h3, h4, h5, h6 {
   h3 {
     font-size: 1.75rem;
   }
-}
-
-/* Global styles */
-html {
-  scroll-behavior: smooth;
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Page transition styles */
-.page-transition-enter-active,
-.page-transition-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.page-transition-enter-from,
-.page-transition-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* Theme variables */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-  --primary-color: #00CCFF;
-  --secondary-color: #9933FF;
-}
-
-[data-theme="dark"] {
-  --bg-color: #0A0C14;
-  --text-color: #ffffff;
-  --primary-color: #00CCFF;
-  --secondary-color: #9933FF;
-}
-
-/* Keep components in memory */
-.keep-alive {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.keep-alive.active {
-  opacity: 1;
-  pointer-events: auto;
 }
 </style>

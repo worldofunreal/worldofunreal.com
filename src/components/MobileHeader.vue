@@ -15,11 +15,6 @@
       </router-link>
       
       <div class="header-controls">
-        <button class="theme-toggle" @click="toggleTheme">
-          <span v-if="theme === 'dark'" class="material-icons">light_mode</span>
-          <span v-else class="material-icons">dark_mode</span>
-        </button>
-        
         <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
           <div class="menu-icon" :class="{ 'active': isMenuOpen }">
             <span class="bar"></span>
@@ -33,26 +28,59 @@
     <nav class="nav-panel" :class="{ 'active': isMenuOpen }">
       <div class="nav-content">
         <div class="nav-links">
-          <router-link to="/" class="nav-link" @click="closeMenu">
+          <router-link to="/" class="nav-link" @click="closeMenu" :class="{ 'active': $route.path === '/' }">
             <span class="link-number">01</span>
             <span class="link-text">Home</span>
+            <div class="link-highlight"></div>
           </router-link>
-          <router-link to="/services" class="nav-link" @click="closeMenu">
+          <router-link to="/services" class="nav-link" @click="closeMenu" :class="{ 'active': $route.path === '/services' }">
             <span class="link-number">02</span>
             <span class="link-text">Work</span>
+            <div class="link-highlight"></div>
           </router-link>
-          <router-link to="/blog" class="nav-link" @click="closeMenu">
+          <router-link to="/blog" class="nav-link" @click="closeMenu" :class="{ 'active': $route.path === '/blog' }">
             <span class="link-number">03</span>
             <span class="link-text">Lab Notes</span>
+            <div class="link-highlight"></div>
           </router-link>
-          <router-link to="/about" class="nav-link" @click="closeMenu">
+          <router-link to="/about" class="nav-link" @click="closeMenu" :class="{ 'active': $route.path === '/about' }">
             <span class="link-number">04</span>
             <span class="link-text">About</span>
+            <div class="link-highlight"></div>
           </router-link>
-          <router-link to="/contact" class="nav-link" @click="closeMenu">
+          <router-link to="/contact" class="nav-link" @click="closeMenu" :class="{ 'active': $route.path === '/contact' }">
             <span class="link-number">05</span>
             <span class="link-text">Contact</span>
+            <div class="link-highlight"></div>
           </router-link>
+        </div>
+        
+        <!-- Settings Section -->
+        <div class="settings-section">
+          <h3 class="settings-title">Settings</h3>
+          <div class="settings-options">
+            <div class="setting-item">
+              <span class="setting-label">Theme</span>
+              <button class="theme-toggle" @click="toggleTheme" :class="{ 'light': theme === 'light' }">
+                <div class="toggle-track">
+                  <div class="toggle-indicator">
+                    <span v-if="theme === 'dark'" class="material-icons">dark_mode</span>
+                    <span v-else class="material-icons">light_mode</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="setting-item">
+              <span class="setting-label">Animations</span>
+              <button class="theme-toggle" :class="{ 'light': animationsEnabled }">
+                <div class="toggle-track">
+                  <div class="toggle-indicator">
+                    <span class="material-icons">{{ animationsEnabled ? 'animation' : 'animation_off' }}</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
         </div>
         
         <div class="menu-footer">
@@ -102,6 +130,7 @@ const emit = defineEmits(['toggle-theme']);
 
 const router = useRouter();
 const isMenuOpen = ref(false);
+const animationsEnabled = ref(true);
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -212,32 +241,42 @@ router.afterEach(() => {
   height: 14px;
   position: relative;
   cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.menu-icon:hover {
+  transform: scale(1.1);
 }
 
 .menu-icon .bar {
   position: absolute;
-  height: 1px;
+  height: 2px;
   width: 100%;
   background-color: var(--neo-text);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+              opacity 0.3s ease,
+              background-color 0.3s ease;
 }
 
 .menu-icon .bar:first-child {
   top: 0;
+  transform-origin: 100% 0%;
 }
 
 .menu-icon .bar:last-child {
   bottom: 0;
+  transform-origin: 100% 100%;
 }
 
 .menu-icon.active .bar:first-child {
-  transform: rotate(45deg);
-  top: 50%;
+  transform: rotate(45deg) translate(2px, -1px);
+  background-color: var(--neo-primary);
 }
 
 .menu-icon.active .bar:last-child {
-  transform: rotate(-45deg);
-  bottom: 43%;
+  transform: rotate(-45deg) translate(2px, 1px);
+  background-color: var(--neo-primary);
 }
 
 /* Navigation Panel */
@@ -251,7 +290,7 @@ router.afterEach(() => {
   background-color: var(--neo-bg);
   backdrop-filter: blur(15px);
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
   z-index: 999;
   border-left: 1px solid var(--neo-border);
   overflow-y: auto;
@@ -282,7 +321,8 @@ router.afterEach(() => {
   color: var(--neo-text);
   text-decoration: none;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transform: translateX(0);
 }
 
 .link-number {
@@ -290,38 +330,46 @@ router.afterEach(() => {
   font-size: 0.75rem;
   color: var(--neo-primary);
   opacity: 0.8;
+  transition: all 0.3s ease;
 }
 
 .link-text {
   font-size: 1.125rem;
   font-weight: 500;
   letter-spacing: 0.05em;
+  transition: all 0.3s ease;
 }
 
-.nav-link::after {
-  content: '';
+.link-highlight {
   position: absolute;
-  bottom: 0;
-  left: 2rem;
-  width: 0;
-  height: 1px;
-  background-color: var(--neo-primary);
-  transition: width 0.3s ease;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(to bottom, var(--neo-primary), transparent);
+  transition: height 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
-.nav-link:hover::after,
-.nav-link.router-link-active::after {
-  width: calc(100% - 4rem);
+.nav-link:hover {
+  transform: translateX(10px);
 }
 
-.nav-link:hover,
-.nav-link.router-link-active {
-  background-color: rgba(0, 204, 255, 0.05);
+.nav-link:hover .link-highlight,
+.nav-link.active .link-highlight {
+  height: 100%;
 }
 
-.nav-link:hover .link-number,
-.nav-link.router-link-active .link-number {
+.nav-link.active {
+  background: rgba(0, 204, 255, 0.1);
+}
+
+.nav-link.active .link-number {
   opacity: 1;
+  transform: scale(1.1);
+}
+
+.nav-link.active .link-text {
+  color: var(--neo-primary);
+  font-weight: 600;
 }
 
 /* Menu Footer */
@@ -342,13 +390,13 @@ router.afterEach(() => {
   height: 20px;
   color: var(--neo-text);
   opacity: 0.7;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 .social-link:hover {
   opacity: 1;
   color: var(--neo-primary);
-  transform: translateY(-2px);
+  transform: translateY(-5px) scale(1.2);
 }
 
 .copyright {
@@ -365,7 +413,114 @@ router.afterEach(() => {
   height: calc(100vh - var(--neo-header-height));
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 998;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Entry/Exit Animations for Nav Links */
+.nav-panel.active .nav-link {
+  animation: slideIn 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stagger nav links animation */
+.nav-panel.active .nav-link:nth-child(1) { animation-delay: 0.1s; }
+.nav-panel.active .nav-link:nth-child(2) { animation-delay: 0.2s; }
+.nav-panel.active .nav-link:nth-child(3) { animation-delay: 0.3s; }
+.nav-panel.active .nav-link:nth-child(4) { animation-delay: 0.4s; }
+.nav-panel.active .nav-link:nth-child(5) { animation-delay: 0.5s; }
+
+/* Settings Section */
+.settings-section {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--neo-border);
+  margin-top: auto;
+}
+
+.settings-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--neo-text);
+}
+
+.settings-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting-label {
+  font-size: 0.9rem;
+  color: var(--neo-text);
+  opacity: 0.8;
+}
+
+/* Enhanced Theme Toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  width: 48px;
+  height: 24px;
+}
+
+.toggle-track {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 204, 255, 0.2);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 204, 255, 0.3);
+}
+
+.toggle-indicator {
+  width: 20px;
+  height: 20px;
+  background: var(--neo-primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle.light .toggle-indicator {
+  transform: translateX(24px);
+  background: #FFCC00;
+}
+
+.toggle-indicator .material-icons {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 /* Media Queries */
