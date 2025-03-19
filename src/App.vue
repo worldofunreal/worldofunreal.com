@@ -1,7 +1,6 @@
 // src/App.vue
 <template>
   <div :data-theme="theme" class="app">
-    <component :is="isMobileView ? 'MobileHeader' : 'Header'" />
     <main class="main-content">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">

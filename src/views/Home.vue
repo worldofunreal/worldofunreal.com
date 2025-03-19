@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+    <!-- Header -->
+    <Header />
+    
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="container mx-auto px-6 py-24 md:py-36">
@@ -110,6 +113,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import ServiceCard from '../components/ServiceCard.vue';
+import Header from '../components/Header.vue';
 
 onMounted(() => {
   document.title = 'World of Unreal | Next-Gen Digital Experiences';

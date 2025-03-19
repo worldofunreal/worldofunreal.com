@@ -59,6 +59,16 @@ const routes = [
     name: 'style-guide',
     component: StyleGuide 
   },
+  {
+    path: '/about',
+    name: 'about',
+    redirect: '/'
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    redirect: '/'
+  }
 ];
 
 const router = createRouter({

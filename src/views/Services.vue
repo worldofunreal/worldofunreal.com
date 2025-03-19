@@ -1,5 +1,8 @@
 <template>
   <div class="services-page">
+    <!-- Header -->
+    <Header />
+    
     <!-- Hero Section -->
     <section class="services-hero">
       <div class="container mx-auto px-6 py-24 md:py-32">
@@ -150,6 +153,7 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import Header from '../components/Header.vue';
 
 onMounted(() => {
   document.title = 'Premium Services | World of Unreal';

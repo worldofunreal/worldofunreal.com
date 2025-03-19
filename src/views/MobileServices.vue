@@ -34,7 +34,8 @@
           
           <div class="service-content" :class="{ 'active': activeService === 'ai' }">
             <div class="service-image">
-              <img src="/assets/ai-solutions.jpg" alt="AI Solutions" />
+              <!-- AI Generated Image: A futuristic AI interface with holographic displays showing data analytics and machine learning visualizations -->
+              <img src="/assets/placeholder.jpg" alt="AI Solutions" />
             </div>
             <div class="service-details">
               <p>Our AI solutions help businesses automate processes, gain insights from data, and create personalized experiences for their customers. We leverage machine learning, natural language processing, and computer vision to build intelligent applications.</p>
@@ -65,7 +66,8 @@
           
           <div class="service-content" :class="{ 'active': activeService === 'blockchain' }">
             <div class="service-image">
-              <img src="/assets/blockchain.jpg" alt="Blockchain Development" />
+              <!-- AI Generated Image: Abstract visualization of blockchain technology with connected blocks and digital cryptographic elements in a modern, tech aesthetic -->
+              <img src="/assets/placeholder.jpg" alt="Blockchain Development" />
             </div>
             <div class="service-details">
               <p>We build secure, scalable blockchain solutions for businesses across industries. From smart contracts to decentralized applications (dApps), our blockchain development services help you leverage this transformative technology.</p>
@@ -96,7 +98,8 @@
           
           <div class="service-content" :class="{ 'active': activeService === 'metaverse' }">
             <div class="service-image">
-              <img src="/assets/metaverse.jpg" alt="Metaverse Experiences" />
+              <!-- AI Generated Image: Immersive virtual reality world with avatars interacting in a futuristic cityscape with neon lights and holographic displays -->
+              <img src="/assets/placeholder.jpg" alt="Metaverse Experiences" />
             </div>
             <div class="service-details">
               <p>Create immersive virtual worlds and experiences that engage your audience in new and exciting ways. Our metaverse development services help businesses establish a presence in the growing virtual economy.</p>
@@ -127,7 +130,8 @@
           
           <div class="service-content" :class="{ 'active': activeService === 'web3' }">
             <div class="service-image">
-              <img src="/assets/web3.jpg" alt="Web3 Applications" />
+              <!-- AI Generated Image: Decentralized web interface showing connected nodes, cryptocurrency elements, and decentralized app interfaces in a clean, modern design -->
+              <img src="/assets/placeholder.jpg" alt="Web3 Applications" />
             </div>
             <div class="service-details">
               <p>Build next-generation web applications that leverage decentralized technologies. Our Web3 development services help you create applications that are secure, transparent, and user-centric.</p>

@@ -1,53 +1,84 @@
 <template>
-  <header class="mobile-header" :class="{ 'menu-open': isMenuOpen }">
+  <header class="neo-header" :class="{ 'menu-open': isMenuOpen }">
     <!-- Main Header Bar -->
     <div class="header-bar">
       <router-link to="/" class="logo-container" @click="closeMenu">
-        <img 
-          :src="theme === 'dark' ? '/src/favicon-wb.png' : '/src/favicon-bw.png'" 
-          alt="World of Unreal" 
-          class="logo-img"
-        />
-        <span class="logo-text">World of Unreal</span>
+        <!-- AI Generated Image: Minimalist logo for "World of Unreal" with a tech/futuristic style -->
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="logo-text">UNREAL</span>
       </router-link>
       
       <div class="header-controls">
         <button class="theme-toggle" @click="toggleTheme">
-          <span v-if="theme === 'dark'" class="toggle-icon">☀️</span>
-          <span v-else class="toggle-icon">🌙</span>
+          <span v-if="theme === 'dark'" class="material-icons">light_mode</span>
+          <span v-else class="material-icons">dark_mode</span>
         </button>
         
-        <button class="menu-toggle" @click="toggleMenu">
-          <span class="menu-icon" :class="{ 'open': isMenuOpen }">
+        <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
+          <div class="menu-icon" :class="{ 'active': isMenuOpen }">
             <span class="bar"></span>
             <span class="bar"></span>
-            <span class="bar"></span>
-          </span>
+          </div>
         </button>
       </div>
     </div>
     
-    <!-- Mobile Navigation Menu (Slide Down) -->
-    <nav class="mobile-nav" :class="{ 'open': isMenuOpen }">
-      <div class="nav-links">
-        <router-link to="/" class="nav-link" @click="closeMenu">Home</router-link>
-        <router-link to="/services" class="nav-link" @click="closeMenu">Services</router-link>
-        <router-link to="/blog" class="nav-link" @click="closeMenu">Blog</router-link>
-        <router-link to="/theme-demo" class="nav-link" @click="closeMenu">Theme Demo</router-link>
-        <router-link to="/style-guide" class="nav-link" @click="closeMenu">Style Guide</router-link>
-      </div>
-      
-      <div class="social-links">
-        <a href="https://twitter.com/worldofunreal" target="_blank" class="social-link" @click="closeMenu">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
-            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
-          </svg>
-        </a>
-        <a href="https://github.com/worldofunreal" target="_blank" class="social-link" @click="closeMenu">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-          </svg>
-        </a>
+    <!-- Mobile Navigation Menu -->
+    <nav class="nav-panel" :class="{ 'active': isMenuOpen }">
+      <div class="nav-content">
+        <div class="nav-links">
+          <router-link to="/" class="nav-link" @click="closeMenu">
+            <span class="link-number">01</span>
+            <span class="link-text">Home</span>
+          </router-link>
+          <router-link to="/services" class="nav-link" @click="closeMenu">
+            <span class="link-number">02</span>
+            <span class="link-text">Work</span>
+          </router-link>
+          <router-link to="/blog" class="nav-link" @click="closeMenu">
+            <span class="link-number">03</span>
+            <span class="link-text">Lab Notes</span>
+          </router-link>
+          <router-link to="/about" class="nav-link" @click="closeMenu">
+            <span class="link-number">04</span>
+            <span class="link-text">About</span>
+          </router-link>
+          <router-link to="/contact" class="nav-link" @click="closeMenu">
+            <span class="link-number">05</span>
+            <span class="link-text">Contact</span>
+          </router-link>
+        </div>
+        
+        <div class="menu-footer">
+          <div class="social-links">
+            <a href="https://twitter.com/worldofunreal" target="_blank" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4.01C21 4.5 20.02 4.69 19 5C18.2 4.09 16.97 3.72 15.65 4.03C14.33 4.34 13.36 5.4 13.04 6.71C13.01 6.89 12.99 7.06 13 7.24C9.57 7.09 6.42 5.73 4.22 3.25C3.41 4.72 3.8 6.57 5.16 7.59C4.4 7.58 3.67 7.38 3 7C3 7.02 3 7.03 3 7.05C3 8.55 4.11 9.83 5.68 10.17C5.49 10.22 5.3 10.24 5.11 10.25C4.97 10.25 4.84 10.24 4.71 10.23C5.06 11.49 6.24 12.36 7.63 12.39C6.53 13.24 5.1 13.68 3.65 13.69C3.44 13.69 3.23 13.68 3 13.66C4.5 14.56 6.28 15 8 15C15.64 15 19.74 8.25 19.74 2.45C19.74 2.3 19.74 2.16 19.73 2.01C20.73 1.37 21.59 0.54 22.17 -0.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="https://github.com/worldofunreal" target="_blank" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 19C4 20.5 4 16.5 2 16M16 22V18.13C16 17.42 15.94 17.05 15.71 16.67C18.42 16.35 21 15.11 21 9.5C20.97 8.09 20.44 6.74 19.5 5.72C19.95 4.47 19.91 3.09 19.4 1.87C19.4 1.87 18.17 1.54 15.5 3.32C13.26 2.76 10.92 2.76 8.68 3.32C6 1.54 4.78 1.87 4.78 1.87C4.19 3.08 4.18 4.49 4.62 5.73C3.63 6.78 3.11 8.19 3.14 9.64C3.14 15.11 5.71 16.35 8.42 16.67C8.19 17.06 8.09 17.44 8.08 17.87V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/company/worldofunreal" target="_blank" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+          <div class="copyright">
+            © {{ new Date().getFullYear() }} World of Unreal
+          </div>
+        </div>
       </div>
     </nav>
     
@@ -57,13 +88,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
   theme: {
     type: String,
-    default: 'light'
+    default: 'dark'
   }
 });
 
@@ -99,7 +130,16 @@ router.afterEach(() => {
 </script>
 
 <style scoped>
-.mobile-header {
+:root {
+  --neo-header-height: 60px;
+  --neo-primary: #00CCFF;
+  --neo-text: #FFFFFF;
+  --neo-bg: rgba(6, 8, 15, 0.85);
+  --neo-card: rgba(15, 20, 35, 0.5);
+  --neo-border: rgba(255, 255, 255, 0.1);
+}
+
+.neo-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -112,247 +152,236 @@ router.afterEach(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
-  background-color: var(--light-card);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  height: 60px;
-  transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .header-bar {
-  background-color: var(--dark-card);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  padding: 0 1.5rem;
+  background-color: var(--neo-bg);
+  backdrop-filter: blur(12px);
+  height: var(--neo-header-height);
+  border-bottom: 1px solid var(--neo-border);
 }
 
 .logo-container {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: var(--text-dark);
+  color: var(--neo-text);
+  gap: 0.75rem;
 }
 
-[data-theme="dark"] .logo-container {
-  color: var(--text-light);
-}
-
-.logo-img {
-  height: 32px;
-  width: auto;
-  margin-right: 0.5rem;
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--neo-primary);
 }
 
 .logo-text {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  display: none; /* Hide text on smallest screens */
+  letter-spacing: 0.1em;
+  line-height: 1;
 }
 
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .theme-toggle, .menu-toggle {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-dark);
-  transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .theme-toggle, 
-[data-theme="dark"] .menu-toggle {
-  color: var(--text-light);
+  color: var(--neo-text);
+  transition: color 0.3s ease;
 }
 
 .theme-toggle:hover, .menu-toggle:hover {
-  color: var(--primary-color);
+  color: var(--neo-primary);
 }
 
-.toggle-icon {
+.material-icons {
   font-size: 1.25rem;
 }
 
 .menu-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 24px;
-  height: 18px;
-  transition: all 0.3s ease;
+  width: 22px;
+  height: 14px;
+  position: relative;
+  cursor: pointer;
 }
 
 .menu-icon .bar {
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-dark);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .menu-icon .bar {
-  background-color: var(--text-light);
-}
-
-/* Animated hamburger to X */
-.menu-icon.open .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-icon.open .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-icon.open .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Mobile Navigation Menu */
-.mobile-nav {
   position: absolute;
-  top: 60px; /* Height of header bar */
-  left: 0;
+  height: 1px;
   width: 100%;
-  background-color: var(--light-card);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  transform: translateY(-100%);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
-  max-height: calc(100vh - 60px);
+  background-color: var(--neo-text);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-icon .bar:first-child {
+  top: 0;
+}
+
+.menu-icon .bar:last-child {
+  bottom: 0;
+}
+
+.menu-icon.active .bar:first-child {
+  transform: rotate(45deg);
+  top: 50%;
+}
+
+.menu-icon.active .bar:last-child {
+  transform: rotate(-45deg);
+  bottom: 43%;
+}
+
+/* Navigation Panel */
+.nav-panel {
+  position: fixed;
+  top: var(--neo-header-height);
+  right: 0;
+  width: 100%;
+  max-width: 360px;
+  height: calc(100vh - var(--neo-header-height));
+  background-color: var(--neo-bg);
+  backdrop-filter: blur(15px);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 999;
+  border-left: 1px solid var(--neo-border);
   overflow-y: auto;
 }
 
-[data-theme="dark"] .mobile-nav {
-  background-color: var(--dark-card);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+.nav-panel.active {
+  transform: translateX(0);
 }
 
-.mobile-nav.open {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 2rem 0;
 }
 
 .nav-links {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 .nav-link {
-  padding: 1rem 1.5rem;
-  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  color: var(--neo-text);
   text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.link-number {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  color: var(--neo-primary);
+  opacity: 0.8;
+}
+
+.link-text {
+  font-size: 1.125rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-[data-theme="dark"] .nav-link {
-  color: var(--text-light);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 2rem;
+  width: 0;
+  height: 1px;
+  background-color: var(--neo-primary);
+  transition: width 0.3s ease;
 }
 
-.nav-link:hover, .nav-link.router-link-active {
-  background-color: rgba(0, 0, 0, 0.03);
-  color: var(--primary-color);
+.nav-link:hover::after,
+.nav-link.router-link-active::after {
+  width: calc(100% - 4rem);
 }
 
-[data-theme="dark"] .nav-link:hover, 
-[data-theme="dark"] .nav-link.router-link-active {
-  background-color: rgba(255, 255, 255, 0.03);
+.nav-link:hover,
+.nav-link.router-link-active {
+  background-color: rgba(0, 204, 255, 0.05);
+}
+
+.nav-link:hover .link-number,
+.nav-link.router-link-active .link-number {
+  opacity: 1;
+}
+
+/* Menu Footer */
+.menu-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--neo-border);
+  margin-top: auto;
 }
 
 .social-links {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  margin-top: 0.5rem;
-}
-
-[data-theme="dark"] .social-links {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .social-link {
-  color: var(--text-dark);
+  width: 20px;
+  height: 20px;
+  color: var(--neo-text);
+  opacity: 0.7;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
-[data-theme="dark"] .social-link {
-  color: var(--text-light);
-  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .social-link:hover {
-  color: var(--primary-color);
-  background-color: rgba(0, 0, 0, 0.05);
+  opacity: 1;
+  color: var(--neo-primary);
   transform: translateY(-2px);
 }
 
-[data-theme="dark"] .social-link:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+.copyright {
+  font-size: 0.75rem;
+  opacity: 0.5;
 }
 
-/* Backdrop for when menu is open */
+/* Backdrop */
 .menu-backdrop {
   position: fixed;
-  top: 60px;
+  top: var(--neo-header-height);
   left: 0;
   width: 100%;
-  height: calc(100vh - 60px);
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  height: calc(100vh - var(--neo-header-height));
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  backdrop-filter: blur(4px);
 }
 
 /* Media Queries */
-@media (min-width: 480px) {
+@media (min-width: 768px) {
   .header-bar {
-    padding: 0.75rem 1.5rem;
+    padding: 0 2rem;
   }
   
-  .logo-text {
-    display: block; /* Show logo text on larger screens */
+  .nav-panel {
+    max-width: 400px;
   }
 }
 
-@media (min-width: 768px) {
-  .header-bar {
-    padding: 0.75rem 2rem;
-  }
-  
-  .logo-img {
-    height: 36px;
-  }
-  
+@media (max-width: 359px) {
   .logo-text {
-    font-size: 1.1rem;
-  }
-  
-  /* Slightly larger menu on tablets */
-  .nav-link {
-    padding: 1.25rem 2rem;
+    display: none;
   }
 }
 </style> 
