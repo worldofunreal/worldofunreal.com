@@ -93,7 +93,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .theme-example {
   padding: 2rem;
   max-width: 800px;

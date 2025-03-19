@@ -3,7 +3,6 @@ import { defineConfig } from 'vite';
 import environment from 'vite-plugin-environment';
 import vue from '@vitejs/plugin-vue';
 import dotenv from 'dotenv';
-import postcssPresetEnv from 'postcss-preset-env';
 
 dotenv.config({ path: '../../.env' });
 
@@ -36,14 +35,5 @@ export default defineConfig({
       { find: 'declarations', replacement: fileURLToPath(new URL('../declarations', import.meta.url)) },
       { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
     ]
-  },
-  css: {
-    postcss: {
-      plugins: [
-        postcssPresetEnv({
-          features: { 'nesting-rules': true }
-        })
-      ],
-    },
-  },
+  }
 });

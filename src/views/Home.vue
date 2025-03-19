@@ -66,7 +66,7 @@ const technologies = ref([
 ]);
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .home-view {
   min-height: 100vh;
   color: white;
@@ -107,15 +107,15 @@ const technologies = ref([
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 12px rgba(0, 204, 255, 0.2);
+}
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0, 204, 255, 0.3);
-  }
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 204, 255, 0.3);
+}
 
-  i {
-    font-size: 1.2rem;
-  }
+.cta-button i {
+  font-size: 1.2rem;
 }
 
 .featured {
@@ -145,12 +145,12 @@ const technologies = ref([
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+}
 
-  &:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  }
+.tech-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .tech-icon {
@@ -195,20 +195,20 @@ const technologies = ref([
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+}
 
-  &:hover {
-    color: #9933FF;
-    transform: translateX(5px);
-  }
+.learn-more:hover {
+  color: #9933FF;
+  transform: translateX(5px);
+}
 
-  &::after {
-    content: '→';
-    transition: transform 0.3s ease;
-  }
+.learn-more::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
 
-  &:hover::after {
-    transform: translateX(5px);
-  }
+.learn-more:hover::after {
+  transform: translateX(5px);
 }
 
 .quick-links {
@@ -229,16 +229,16 @@ const technologies = ref([
   padding: 0.5rem 1rem;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.05);
+}
 
-  &:hover {
-    opacity: 1;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-  }
+.nav-link:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
 
-  i {
-    font-size: 1.1rem;
-  }
+.nav-link i {
+  font-size: 1.1rem;
 }
 
 @media (min-width: 768px) {

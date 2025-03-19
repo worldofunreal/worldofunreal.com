@@ -36,7 +36,7 @@ defineProps({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .project-card {
   padding: 1rem;
   margin: 1rem;

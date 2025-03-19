@@ -46,7 +46,7 @@ const toggleTheme = () => {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .settings-view {
   padding: 2rem;
   max-width: 800px;
@@ -62,17 +62,19 @@ const toggleTheme = () => {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: var(--text-dark);
-  [data-theme="dark"] & {
-    color: var(--text-light);
-  }
+}
+
+[data-theme="dark"] .settings-title {
+  color: var(--text-light);
 }
 
 .settings-subtitle {
   font-size: 1.2rem;
   color: var(--text-muted-dark);
-  [data-theme="dark"] & {
-    color: var(--text-muted-light);
-  }
+}
+
+[data-theme="dark"] .settings-subtitle {
+  color: var(--text-muted-light);
 }
 
 .settings-section {
@@ -83,18 +85,20 @@ const toggleTheme = () => {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   color: var(--text-dark);
-  [data-theme="dark"] & {
-    color: var(--text-light);
-  }
+}
+
+[data-theme="dark"] .section-title {
+  color: var(--text-light);
 }
 
 .settings-group {
   background: var(--light-card);
   border-radius: 12px;
   padding: 1.5rem;
-  [data-theme="dark"] & {
-    background: var(--dark-card);
-  }
+}
+
+[data-theme="dark"] .settings-group {
+  background: var(--dark-card);
 }
 
 .setting-item {
@@ -103,13 +107,14 @@ const toggleTheme = () => {
   align-items: center;
   padding: 1rem 0;
   border-bottom: 1px solid var(--text-muted-dark);
-  [data-theme="dark"] & {
-    border-bottom-color: var(--text-muted-light);
-  }
+}
 
-  &:last-child {
-    border-bottom: none;
-  }
+[data-theme="dark"] .setting-item {
+  border-bottom-color: var(--text-muted-light);
+}
+
+.setting-item:last-child {
+  border-bottom: none;
 }
 
 .setting-info {
@@ -122,17 +127,19 @@ const toggleTheme = () => {
   font-weight: 500;
   color: var(--text-dark);
   margin-bottom: 0.25rem;
-  [data-theme="dark"] & {
-    color: var(--text-light);
-  }
+}
+
+[data-theme="dark"] .setting-label {
+  color: var(--text-light);
 }
 
 .setting-description {
   font-size: 0.875rem;
   color: var(--text-muted-dark);
-  [data-theme="dark"] & {
-    color: var(--text-muted-light);
-  }
+}
+
+[data-theme="dark"] .setting-description {
+  color: var(--text-muted-light);
 }
 
 .theme-toggle {
