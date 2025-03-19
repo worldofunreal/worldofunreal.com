@@ -2,8 +2,10 @@
   <div class="home-view">
     <!-- Hero Section -->
     <section class="hero">
-      <h1 class="title">WORLD OF UNREAL</h1>
-      <p class="subtitle">ENTER THE METAVERSE</p>
+      <div class="hero-logo">
+        <img src="/logo.svg" alt="World of Unreal" class="logo-image" />
+      </div>
+      <p class="subtitle">INTO THE METAVERSE</p>
       <router-link to="/tech" class="cta-button">
         <i class="fas fa-rocket"></i> BEGIN JOURNEY
       </router-link>
@@ -42,7 +44,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import useTheme from '../utils/useTheme';
+
+const { enabled } = useTheme();
+const theme = computed(() => enabled.value ? 'dark' : 'light');
 
 const technologies = ref([
   { 
@@ -78,20 +84,27 @@ const technologies = ref([
   padding: 4rem 1rem;
 }
 
-.title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #00CCFF 0%, #9933FF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
+.hero-logo {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-image {
+  width: 80%;
+  max-width: 500px;
+  height: auto;
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
   margin-bottom: 2rem;
   opacity: 0.9;
+  letter-spacing: 0.1em;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--color-primary);
+  text-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
 }
 
 .cta-button {
@@ -245,5 +258,13 @@ const technologies = ref([
   .tech-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+  
+  .subtitle {
+    font-size: 2rem;
+  }
+}
+
+[data-theme="dark"] .logo-image {
+  filter: brightness(1.2);
 }
 </style>
