@@ -8,13 +8,13 @@
         </transition>
       </router-view>
     </main>
-    <MobileFooter />
+    <Footer />
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue';
-import MobileFooter from './components/MobileFooter.vue';
+import Footer from './components/Footer.vue';
 import useTheme from './utils/useTheme';
 
 const { enabled } = useTheme();

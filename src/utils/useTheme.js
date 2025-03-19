@@ -1,66 +1,48 @@
-import { ref, onMounted, watch } from 'vue';
+import { ref } from 'vue';
+import { ApplicationSettings, Application } from '@nativescript/core';
 
-// Create a global state for theme that can be shared across components
+// Create a global state for theme
 const enabled = ref(false);
 
 export default function useTheme() {
-  // Function to toggle theme
+  // Toggle theme function
   const toggleTheme = () => {
     enabled.value = !enabled.value;
-    
-    // Update localStorage preference
-    localStorage.setItem('darkMode', enabled.value);
-    
-    // Update document theme attribute
-    document.documentElement.setAttribute('data-theme', enabled.value ? 'dark' : 'light');
-    
-    // Update meta theme color for mobile browsers
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', enabled.value ? '#14161E' : '#FAFAFA');
+    // Save theme setting in NativeScript ApplicationSettings
+    ApplicationSettings.setBoolean('darkMode', enabled.value);
+    applyThemeToApp();
+  };
+  
+  // Apply the theme to app
+  const applyThemeToApp = () => {
+    const rootView = Application.getRootView();
+    if (rootView) {
+      rootView.className = enabled.value ? 'ns-dark' : 'ns-light';
     }
   };
 
-  // Function to set theme based on saved preference or system preference
+  // Initial theme setup based on preferences
   const setTheme = () => {
-    // Check saved preference first
-    const savedTheme = localStorage.getItem('darkMode');
+    const savedTheme = ApplicationSettings.getBoolean('darkMode', null);
     
     if (savedTheme !== null) {
-      enabled.value = savedTheme === 'true';
+      enabled.value = savedTheme;
     } else {
-      // If no saved preference, check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      enabled.value = prefersDark;
+      // Default to system preference if available
+      try {
+        const isDarkMode = Application.systemAppearance() === 'dark';
+        enabled.value = isDarkMode;
+      } catch (e) {
+        enabled.value = false; // Default to light if can't detect
+      }
     }
     
-    // Set theme attribute on document
-    document.documentElement.setAttribute('data-theme', enabled.value ? 'dark' : 'light');
-    
-    // Update meta theme color
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', enabled.value ? '#14161E' : '#FAFAFA');
-    }
+    applyThemeToApp();
   };
 
-  // Watch for system theme changes
-  onMounted(() => {
-    setTheme();
-    
-    // Watch for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-      // Only update if user hasn't set a preference
-      if (localStorage.getItem('darkMode') === null) {
-        enabled.value = event.matches;
-        document.documentElement.setAttribute('data-theme', enabled.value ? 'dark' : 'light');
-      }
-    });
-  });
-
-  return {
-    enabled,
-    toggleTheme,
-    setTheme
+  return { 
+    enabled, 
+    toggleTheme, 
+    setTheme 
   };
 }
