@@ -205,12 +205,16 @@
         <a href="#" class="btn btn-primary">Contact Us</a>
       </div>
     </section>
+    
+    <!-- Add AppFooter at the end -->
+    <AppFooter />
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue';
 import useTheme from '../utils/useTheme';
+import AppFooter from '../components/AppFooter.vue';
 
 const { enabled, toggleTheme } = useTheme();
 const theme = computed(() => enabled.value ? 'dark' : 'light');
@@ -230,10 +234,13 @@ const toggleService = (service) => {
   font-family: 'Montserrat', sans-serif;
   color: var(--text-dark);
   background-color: var(--light-bg);
-  min-height: 100%;
+  min-height: 100vh;
   width: 100%;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(70px + 2rem); /* Space for fixed bottom nav + some padding */
 }
 
 [data-theme="dark"] .mobile-services {

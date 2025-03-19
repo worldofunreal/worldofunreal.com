@@ -394,6 +394,9 @@
           </div>
         </div>
       </section>
+      
+      <!-- Add AppFooter at the end -->
+      <AppFooter />
     </div>
     
     <!-- Bottom App Navigation -->
@@ -440,6 +443,7 @@ import { ref, onMounted, computed, nextTick } from 'vue';
 import { gsap } from 'gsap';
 import ThemedIcons from '../utils/useIconSystem';
 import useTheme from '../utils/useTheme';
+import AppFooter from '../components/AppFooter.vue';
 
 // Theme management
 const { enabled, toggleTheme } = useTheme();
@@ -730,120 +734,110 @@ const showTechDetails = (techId) => {
   color: white;
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
   background: linear-gradient(180deg, #0A0C1B 0%, #1A0B36 100%);
-  padding-bottom: 70px; /* Space for bottom nav */
+  display: flex;
+  flex-direction: column;
 }
 
-.container {
-  padding: 0 1.5rem;
-  max-width: 100%;
-  margin: 0 auto;
+.journey-container {
+  flex: 1;
   position: relative;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-/* App Navigation - Enhanced with better visual feedback */
+/* Journey sections */
+.journey-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.journey-section.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Bottom App Navigation */
 .app-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  background: rgba(10, 12, 30, 0.85);
+  background: rgba(10, 12, 30, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-top: 1px solid rgba(0, 204, 255, 0.15);
-  z-index: 100;
+  z-index: 1000;
   padding: 0 10px;
   box-shadow: 0 -5px 20px rgba(0, 204, 255, 0.1);
 }
 
-.nav-tab {
+/* Progress Indicator - Hide on mobile */
+.journey-progress {
+  display: none; /* Hide on mobile */
+}
+
+/* Container adjustments */
+.container {
+  padding: 1rem 1.5rem;
+  width: 100%;
+  margin: 0 auto;
   position: relative;
+  z-index: 1;
+}
+
+/* Entry Portal Section adjustments */
+#entry-portal .container {
+  min-height: calc(100vh - 60px); /* Full height minus nav */
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 20%;
-  height: 100%;
-  color: rgba(255, 255, 255, 0.6);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  cursor: pointer;
 }
 
-.nav-tab.active {
-  color: #00CCFF;
+/* Other sections spacing adjustments */
+.tech-grid,
+.service-cards,
+.mission-container,
+.achievements-section,
+.action-cards,
+.contact-cta {
+  margin-bottom: 2rem;
 }
 
-.tab-icon {
-  width: 22px;
-  height: 22px;
-  margin-bottom: 4px;
-  transition: all 0.3s ease;
+.process-steps,
+.mission-cards,
+.achievements-grid {
+  gap: 1rem;
 }
 
-.tab-label {
-  font-size: 10px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  opacity: 0.7;
+/* Ensure content fills space */
+.mobile-app {
+  padding-bottom: 60px; /* Height of bottom nav */
 }
 
-.nav-tab.active .tab-label {
-  opacity: 1;
-}
-
-.active-indicator {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #00CCFF 0%, #9933FF 100%);
-  border-radius: 0 0 4px 4px;
-  opacity: 0;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 204, 255, 0.7);
-}
-
-.nav-tab.active .active-indicator {
-  width: 20px;
-  opacity: 1;
-}
-
-.nav-tab:active {
-  transform: scale(0.9);
-}
-
-.theme-toggle {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(0, 204, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 204, 255, 0.2);
-  box-shadow: 0 0 15px rgba(0, 204, 255, 0.15);
-}
-
-.theme-toggle:active {
-  transform: scale(0.9);
-  background: rgba(0, 204, 255, 0.2);
-}
-
-.theme-toggle .tab-icon {
-  width: 18px;
-  height: 18px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.9);
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  .journey-progress {
+    display: flex; /* Show progress indicator on desktop */
+  }
+  
+  .journey-section {
+    padding: 2rem 0;
+  }
+  
+  .container {
+    padding: 2rem 1.5rem;
+  }
 }
 
 /* Portal Effect - Enhanced glow */
@@ -864,67 +858,6 @@ const showTechDetails = (techId) => {
   z-index: 5;
   pointer-events: none;
   will-change: transform, opacity;
-}
-
-/* Journey Container */
-.journey-container {
-  position: relative;
-  min-height: calc(100vh - 60px); /* Subtract nav height */
-}
-
-/* Sections */
-.journey-section {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: calc(100vh - 60px - 40px); /* Subtract nav and progress indicator */
-  opacity: 0;
-  visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem 0;
-  z-index: 1;
-  transform: translateY(40px) scale(0.9);
-}
-
-.journey-section.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-/* Progress Indicator - Enhanced with pill shape and glow */
-.journey-progress {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.5rem;
-  z-index: 10;
-  background: rgba(10, 12, 30, 0.7);
-  padding: 6px 10px;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 204, 255, 0.15);
-  box-shadow: 0 0 15px rgba(0, 204, 255, 0.1);
-}
-
-.progress-marker {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.progress-marker.active {
-  background-color: #00CCFF;
-  transform: scale(1.5);
-  box-shadow: 0 0 10px rgba(0, 204, 255, 0.7);
 }
 
 /* Entry Portal Section */
@@ -1962,5 +1895,90 @@ const showTechDetails = (techId) => {
   .action-cards {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* Navigation styles */
+.nav-tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+.nav-tab.active {
+  color: #00CCFF;
+}
+
+.tab-icon {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 4px;
+  transition: all 0.3s ease;
+}
+
+.tab-label {
+  font-size: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.nav-tab.active .tab-label {
+  opacity: 1;
+}
+
+.active-indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00CCFF 0%, #9933FF 100%);
+  border-radius: 0 0 4px 4px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 204, 255, 0.7);
+}
+
+.nav-tab.active .active-indicator {
+  width: 20px;
+  opacity: 1;
+}
+
+.nav-tab:active {
+  transform: scale(0.9);
+}
+
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 204, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 204, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 204, 255, 0.15);
+}
+
+.theme-toggle:active {
+  transform: scale(0.9);
+  background: rgba(0, 204, 255, 0.2);
+}
+
+.theme-toggle .tab-icon {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
 }
 </style>
