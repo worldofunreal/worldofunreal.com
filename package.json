@@ -28,7 +28,7 @@
     "@dfinity/principal": "^1.0.0",
     "@headlessui/vue": "^1.7.22",
     "@heroicons/vue": "^2.1.5",
-    "gsap": "^3.12.5",
+    "gsap": "^3.12.7",
     "pinia": "^2.1.7",
     "tailwindcss-filters": "^3.0.0",
     "vue": "^3.4.15",
