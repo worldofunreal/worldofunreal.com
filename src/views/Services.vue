@@ -210,7 +210,6 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import MobileHeader from '../components/MobileHeader.vue';
 import useTheme from '../utils/useTheme';
 
 const { enabled, toggleTheme } = useTheme();
@@ -231,7 +230,10 @@ const toggleService = (service) => {
   font-family: 'Montserrat', sans-serif;
   color: var(--text-dark);
   background-color: var(--light-bg);
-  padding-top: 60px; /* Height of the fixed header */
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 [data-theme="dark"] .mobile-services {
@@ -243,6 +245,8 @@ const toggleService = (service) => {
   padding: 0 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero Section */
