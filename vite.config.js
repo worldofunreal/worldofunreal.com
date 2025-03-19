@@ -3,8 +3,7 @@ import { defineConfig } from 'vite';
 import environment from 'vite-plugin-environment';
 import vue from '@vitejs/plugin-vue';
 import dotenv from 'dotenv';
-import autoprefixer from 'autoprefixer';
-import tailwindcss from 'tailwindcss';
+import postcssPresetEnv from 'postcss-preset-env';
 
 dotenv.config({ path: '../../.env' });
 
@@ -40,7 +39,11 @@ export default defineConfig({
   },
   css: {
     postcss: {
-      plugins: [tailwindcss, autoprefixer],
+      plugins: [
+        postcssPresetEnv({
+          features: { 'nesting-rules': true }
+        })
+      ],
     },
   },
 });

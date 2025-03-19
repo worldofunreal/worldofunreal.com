@@ -10,47 +10,56 @@
     <section class="services-grid">
       <div v-for="service in services" :key="service.id" class="service-card">
         <div class="service-icon">
-          <component :is="service.icon" />
+          <i :class="service.icon"></i>
         </div>
         <h3>{{ service.name }}</h3>
         <p class="description">{{ service.description }}</p>
         <ul class="features">
-          <li v-for="feature in service.features" :key="feature">{{ feature }}</li>
+          <li v-for="feature in service.features" :key="feature">
+            <i class="fas fa-check-circle"></i> {{ feature }}
+          </li>
         </ul>
         <div class="service-stats">
           <div class="stat">
+            <i class="fas fa-project-diagram"></i>
             <span class="stat-value">{{ service.projects }}+</span>
             <span class="stat-label">Projects</span>
           </div>
           <div class="stat">
+            <i class="fas fa-smile-beam"></i>
             <span class="stat-value">{{ service.satisfaction }}%</span>
             <span class="stat-label">Satisfaction</span>
           </div>
         </div>
         <router-link :to="'/contact'" class="cta-button">
-          Get Started
+          <i class="fas fa-rocket"></i> Get Started
         </router-link>
       </div>
     </section>
 
     <!-- Quick Links -->
     <nav class="quick-links">
-      <router-link to="/" class="nav-link">Home</router-link>
-      <router-link to="/about" class="nav-link">About Us</router-link>
-      <router-link to="/contact" class="nav-link">Contact</router-link>
+      <router-link to="/" class="nav-link">
+        <i class="fas fa-home"></i> Home
+      </router-link>
+      <router-link to="/about" class="nav-link">
+        <i class="fas fa-info-circle"></i> About Us
+      </router-link>
+      <router-link to="/contact" class="nav-link">
+        <i class="fas fa-envelope"></i> Contact
+      </router-link>
     </nav>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import ThemedIcons from '../utils/useIconSystem';
 
 const services = ref([
   {
     id: 'ai-integration',
     name: 'AI Integration',
-    icon: ThemedIcons.BrainIcon,
+    icon: 'fas fa-brain',
     description: 'Harness the power of artificial intelligence to transform your business processes and decision-making.',
     features: [
       'Custom AI Models',
@@ -64,7 +73,7 @@ const services = ref([
   {
     id: 'blockchain',
     name: 'Blockchain Solutions',
-    icon: ThemedIcons.BlockchainIcon,
+    icon: 'fas fa-link',
     description: 'Build secure, transparent, and decentralized applications using cutting-edge blockchain technology.',
     features: [
       'Smart Contracts',
@@ -78,7 +87,7 @@ const services = ref([
   {
     id: 'metaverse',
     name: 'Metaverse Development',
-    icon: ThemedIcons.MetaverseIcon,
+    icon: 'fas fa-vr-cardboard',
     description: 'Create immersive virtual experiences that connect people and businesses in the digital realm.',
     features: [
       'Virtual Worlds',
@@ -146,10 +155,25 @@ const services = ref([
 }
 
 .service-icon {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   margin: 0 auto 1.5rem;
   color: #00CCFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background: rgba(0, 204, 255, 0.1);
+  border-radius: 50%;
+  border: 2px solid rgba(0, 204, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+  color: #9933FF;
+  background: rgba(153, 51, 255, 0.1);
+  border-color: rgba(153, 51, 255, 0.2);
 }
 
 .service-card h3 {
@@ -177,13 +201,14 @@ const services = ref([
   padding-left: 1.5rem;
   position: relative;
   opacity: 0.8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.features li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
+.features li i {
   color: #00CCFF;
+  font-size: 1.1rem;
 }
 
 .service-stats {
@@ -191,15 +216,23 @@ const services = ref([
   justify-content: center;
   gap: 2rem;
   margin-bottom: 2rem;
-  padding: 1rem;
+  padding: 1.5rem;
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.stat i {
+  font-size: 1.5rem;
+  color: #00CCFF;
+  margin-bottom: 0.5rem;
 }
 
 .stat-value {
@@ -216,18 +249,27 @@ const services = ref([
 }
 
 .cta-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 1rem 2rem;
   background: linear-gradient(90deg, #00CCFF 0%, #9933FF 100%);
   color: white;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 8px;
   font-weight: 600;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 204, 255, 0.2);
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 204, 255, 0.3);
+}
+
+.cta-button i {
+  font-size: 1.2rem;
 }
 
 .quick-links {
@@ -238,14 +280,26 @@ const services = ref([
 }
 
 .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: white;
   text-decoration: none;
   opacity: 0.8;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .nav-link:hover {
   opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-link i {
+  font-size: 1.1rem;
 }
 
 @media (min-width: 768px) {

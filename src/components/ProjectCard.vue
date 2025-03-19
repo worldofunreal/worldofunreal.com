@@ -1,26 +1,20 @@
 <template>
-  <div :class="[cardBgClass, 'project-card p-4 m-4 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl']">
-    <div class="image-container relative overflow-hidden rounded-lg">
-      <img :src="image" alt="Project Image" class="w-full h-60 object-cover rounded-t-lg transition-transform duration-500 hover:scale-110" />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4">
-        <a :href="link" target="_blank" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-300">
-          View Project
-        </a>
+  <div :class="[cardBgClass, 'project-card']">
+    <div class="image-container">
+      <img :src="image" alt="Project Image" />
+      <div class="overlay">
+        <a :href="link" target="_blank" class="view-button">View Project</a>
       </div>
     </div>
-    <div class="p-4">
-      <h3 :class="['text-2xl font-semibold', cardTextClass]">{{ title }}</h3>
-      <p :class="['mt-2', cardDescriptionClass]">{{ description }}</p>
-      <a :href="link" target="_blank" :class="[cardLinkClass, 'mt-4 inline-flex items-center gap-1 hover:gap-2 transition-all duration-300']">
-        Learn More
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-      </a>
-    </div>
+    <h3 class="title">{{ title }}</h3>
+    <p class="description">{{ description }}</p>
+    <a :href="link" target="_blank" :class="[cardLinkClass, 'link']">
+      Learn More
+      <i class="fas fa-arrow-right"></i>
+    </a>
   </div>
 </template>
-    
+
 <script setup>
 import { computed } from 'vue';
 import useTheme from '../utils/useTheme';
@@ -36,25 +30,95 @@ defineProps({
   title: String,
   description: String,
   image: String,
-  link: String
+  link: String,
+  cardBgClass: String,
+  cardLinkClass: String
 });
 </script>
-    
-<style scoped>
+
+<style lang="scss" scoped>
 .project-card {
-  width: 100%;
-  max-width: 600px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .image-container {
+  position: relative;
+  width: 100%;
   height: 240px;
   overflow: hidden;
+  border-radius: 0.5rem 0.5rem 0 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
 }
 
-/* Dark mode specific styles */
-:deep([data-theme="dark"]) .project-card {
-  border-color: rgba(255, 255, 255, 0.1);
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.view-button {
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+}
+
+.title {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.description {
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 1rem;
+  text-decoration: none;
+  transition: gap 0.3s ease;
+
+  &:hover {
+    gap: 0.5rem;
+  }
 }
 </style>
     
