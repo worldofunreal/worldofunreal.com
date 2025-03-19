@@ -8,13 +8,18 @@
         </transition>
       </router-view>
     </main>
-    <MobileFooter />
+    <footer class="footer-section">
+      <footer>
+        <div class="copyright">
+          © {{ new Date().getFullYear() }} World of Unreal
+        </div>
+      </footer>
+    </footer>
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue';
-import MobileFooter from './components/MobileFooter.vue';
 import useTheme from './utils/useTheme';
 
 const { enabled } = useTheme();

@@ -1,7 +1,7 @@
 // src/router.js
 import { createRouter, createWebHistory } from 'vue-router';
-import MobileHome from './views/MobileHome.vue';
-import MobileServices from './views/MobileServices.vue';
+import Home from './views/Home.vue';
+import Services from './views/Services.vue';
 import Privacy from './views/Privacy.vue';
 import Terms from './views/Terms.vue';
 import Blog from './views/Blog.vue';
@@ -11,7 +11,7 @@ const routes = [
   { 
     path: '/', 
     name: 'home',
-    component: MobileHome
+    component: Home
   },
   { 
     path: '/privacy', 
@@ -31,7 +31,7 @@ const routes = [
   { 
     path: '/services', 
     name: 'services',
-    component: MobileServices
+    component: Services
   },
   { 
     path: '/style-guide', 
