@@ -438,16 +438,12 @@
 <script setup>
 import { ref, onMounted, computed, nextTick } from 'vue';
 import { gsap } from 'gsap';
-import MobileFooter from '../components/MobileFooter.vue';
 import ThemedIcons from '../utils/useIconSystem';
+import useTheme from '../utils/useTheme';
 
 // Theme management
-const theme = ref('dark');
-
-const toggleTheme = () => {
-  theme.value = theme.value === 'light' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', theme.value);
-};
+const { enabled, toggleTheme } = useTheme();
+const theme = computed(() => enabled.value ? 'dark' : 'light');
 
 // Refs for each section
 const entryPortal = ref(null);

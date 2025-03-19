@@ -8,36 +8,17 @@
         </transition>
       </router-view>
     </main>
-    <component :is="isMobileView ? 'MobileFooter' : 'Footer'" />
+    <MobileFooter />
   </div>
 </template>
 
 <script setup>
-import { computed, ref, onMounted, onUnmounted } from 'vue';
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-import MobileHeader from './components/MobileHeader.vue';
+import { computed } from 'vue';
 import MobileFooter from './components/MobileFooter.vue';
 import useTheme from './utils/useTheme';
 
 const { enabled } = useTheme();
 const theme = computed(() => enabled.value ? 'dark' : 'light');
-
-// Mobile detection
-const isMobileView = ref(false);
-
-const checkIfMobile = () => {
-  isMobileView.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-};
-
-onMounted(() => {
-  checkIfMobile();
-  window.addEventListener('resize', checkIfMobile);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('resize', checkIfMobile);
-});
 </script>
 
 <style>
@@ -148,7 +129,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .main-content {
   flex: 1;
-  padding-top: 80px; /* Adjust based on header height */
 }
 
 /* Transitions */

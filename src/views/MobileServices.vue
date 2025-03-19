@@ -205,24 +205,17 @@
         <a href="#" class="btn btn-primary">Contact Us</a>
       </div>
     </section>
-    
-    <!-- Mobile Footer -->
-    <MobileFooter :theme="theme" />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import MobileHeader from '../components/MobileHeader.vue';
-import MobileFooter from '../components/MobileFooter.vue';
+import useTheme from '../utils/useTheme';
 
-const theme = ref('light');
+const { enabled, toggleTheme } = useTheme();
+const theme = computed(() => enabled.value ? 'dark' : 'light');
 const activeService = ref('ai'); // Default open service
-
-const toggleTheme = () => {
-  theme.value = theme.value === 'light' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', theme.value);
-};
 
 const toggleService = (service) => {
   if (activeService.value === service) {
@@ -231,12 +224,6 @@ const toggleService = (service) => {
     activeService.value = service; // Open the clicked service
   }
 };
-
-// Check for user's preferred color scheme
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  theme.value = 'dark';
-  document.documentElement.setAttribute('data-theme', 'dark');
-}
 </script>
 
 <style scoped>
