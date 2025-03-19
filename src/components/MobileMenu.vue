@@ -7,8 +7,13 @@
       class="menu-item"
     >
       <i :class="route.icon" class="menu-icon"></i>
-      <span>{{ route.name }}</span>
+      <span class="menu-label">{{ route.name }}</span>
     </router-link>
+    
+    <button @click="toggleTheme" class="menu-item theme-button" :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+      <i class="menu-icon" :class="theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'"></i>
+      <span class="menu-label">Theme</span>
+    </button>
   </nav>
 </template>
 
@@ -18,6 +23,11 @@ import useTheme from '../utils/useTheme';
 
 const { enabled } = useTheme();
 const theme = computed(() => enabled.value ? 'dark' : 'light');
+
+// Toggle theme function
+const toggleTheme = () => {
+  enabled.value = !enabled.value;
+};
 
 const routes = [
   { name: 'Home', path: '/', icon: 'fas fa-home' },
@@ -81,6 +91,27 @@ const routes = [
 .menu-item span {
   font-size: 0.7rem;
   font-weight: 500;
+}
+
+.theme-button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+}
+
+.theme-button:focus {
+  outline: none;
+}
+
+.menu-label {
+  font-size: var(--font-size-3xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 @media (min-width: 768px) {
