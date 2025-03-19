@@ -4,7 +4,6 @@ import Home from './views/Home.vue';
 import Services from './views/Services.vue';
 import Privacy from './views/Privacy.vue';
 import Terms from './views/Terms.vue';
-import Blog from './views/Blog.vue';
 import Settings from './views/Settings.vue';
 import StyleGuide from './components/StyleGuide.vue';
 
@@ -43,15 +42,6 @@ const routes = [
     meta: {
       transition: 'slide-up',
       keepScroll: false
-    }
-  },
-  { 
-    path: '/blog', 
-    name: 'blog',
-    component: Blog,
-    meta: {
-      transition: 'slide-up',
-      keepScroll: true
     }
   },
   { 
