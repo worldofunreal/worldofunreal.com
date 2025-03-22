@@ -46,10 +46,11 @@ const routes = [
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  padding: 0 var(--spacing-sm);
 }
 
 .logo-image {
-  height: 40px;
+  height: 24px;
   width: auto;
   transition: filter var(--transition-normal) ease, 
               transform var(--transition-fast) ease;
@@ -99,5 +100,15 @@ const routes = [
   justify-content: center;
   width: 100%;
   height: 100%;
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    padding: 0 var(--spacing-lg);
+  }
+
+  .logo-image {
+    height: 28px;
+  }
 }
 </style> 
