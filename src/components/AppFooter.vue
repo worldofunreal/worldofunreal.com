@@ -1,73 +1,278 @@
 <template>
   <footer class="app-footer">
-    <div class="footer-content">
-      <div class="social-links">
-        <a href="https://twitter.com/worldofunreal" target="_blank" class="social-link">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22 4.01C21 4.5 20.02 4.69 19 5C18.2 4.09 16.97 3.72 15.65 4.03C14.33 4.34 13.36 5.4 13.04 6.71C13.01 6.89 12.99 7.06 13 7.24C9.57 7.09 6.42 5.73 4.22 3.25C3.41 4.72 3.8 6.57 5.16 7.59C4.4 7.58 3.67 7.38 3 7C3 7.02 3 7.03 3 7.05C3 8.55 4.11 9.83 5.68 10.17C5.49 10.22 5.3 10.24 5.11 10.25C4.97 10.25 4.84 10.24 4.71 10.23C5.06 11.49 6.24 12.36 7.63 12.39C6.53 13.24 5.1 13.68 3.65 13.69C3.44 13.69 3.23 13.68 3 13.66C4.5 14.56 6.28 15 8 15C15.64 15 19.74 8.25 19.74 2.45C19.74 2.3 19.74 2.16 19.73 2.01C20.73 1.37 21.59 0.54 22.17 -0.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a href="https://github.com/worldofunreal" target="_blank" class="social-link">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 19C4 20.5 4 16.5 2 16M16 22V18.13C16 17.42 15.94 17.05 15.71 16.67C18.42 16.35 21 15.11 21 9.5C20.97 8.09 20.44 6.74 19.5 5.72C19.95 4.47 19.91 3.09 19.4 1.87C19.4 1.87 18.17 1.54 15.5 3.32C13.26 2.76 10.92 2.76 8.68 3.32C6 1.54 4.78 1.87 4.78 1.87C4.19 3.08 4.18 4.49 4.62 5.73C3.63 6.78 3.11 8.19 3.14 9.64C3.14 15.11 5.71 16.35 8.42 16.67C8.19 17.06 8.09 17.44 8.08 17.87V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a href="https://linkedin.com/company/worldofunreal" target="_blank" class="social-link">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="/logo.svg" alt="World of Unreal" class="logo-image" />
+        </div>
+        <p class="footer-tagline">Architect the Metaverse</p>
+        <div class="social-links">
+          <a href="#" target="_blank" rel="noopener" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="social-link">
+            <i class="fab fa-discord"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="social-link">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
-      <div class="copyright">
-        © {{ new Date().getFullYear() }} World of Unreal
+      
+      <div class="footer-nav">
+        <h3 class="footer-title">Navigate</h3>
+        <ul class="footer-links">
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/services">Services</router-link></li>
+          <li><router-link to="/tech">Technologies</router-link></li>
+          <li><router-link to="/about">About</router-link></li>
+          <li><router-link to="/contact">Contact</router-link></li>
+        </ul>
+      </div>
+      
+      <div class="footer-nav">
+        <h3 class="footer-title">Resources</h3>
+        <ul class="footer-links">
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Developers</a></li>
+          <li><router-link to="/privacy">Privacy</router-link></li>
+          <li><router-link to="/terms">Terms</router-link></li>
+        </ul>
+      </div>
+      
+      <div class="footer-nav">
+        <h3 class="footer-title">Connect</h3>
+        <div class="wallet-connect">
+          <a href="#" class="wallet-btn">
+            <i class="fas fa-wallet"></i> Connect Wallet
+          </a>
+        </div>
+        <p class="wallet-info">Join our DAO and participate in governance</p>
       </div>
     </div>
+    
+    <div class="footer-bottom">
+      <div class="copyright">
+        &copy; {{ new Date().getFullYear() }} World of Unreal
+      </div>
+      <div class="built-on">
+        <span>Built on</span>
+        <a href="#" class="chain-link">
+          <i class="fab fa-ethereum"></i> Ethereum
+        </a>
+        <span>&</span>
+        <a href="#" class="chain-link">
+          <i class="fas fa-cube"></i> Solana
+        </a>
+      </div>
+    </div>
+    
+    <div class="footer-particles"></div>
   </footer>
 </template>
 
 <style scoped>
 .app-footer {
-  background: var(--dark-bg);
-  color: var(--text-light);
-  padding: 2rem 0;
+  color: var(--color-text-primary);
+  padding: 4rem 0 2rem;
   margin-top: auto;
   width: 100%;
   position: relative;
-  z-index: 1;
+  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-1);
+  display: none; /* Hide by default on mobile */
 }
 
-.footer-content {
-  padding: 0 1.5rem;
+.footer-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.footer-brand {
   text-align: center;
+}
+
+.footer-logo {
+  margin-bottom: var(--spacing-sm);
+}
+
+.logo-image {
+  height: 32px;
+  width: auto;
+}
+
+.footer-tagline {
+  font-family: var(--font-family-logo);
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
 }
 
 .social-link {
-  color: var(--text-light);
-  opacity: 0.7;
+  color: var(--color-text-secondary);
   transition: all 0.3s ease;
+  font-size: var(--font-size-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
 }
 
 .social-link:hover {
-  opacity: 1;
-  transform: translateY(-2px);
+  color: var(--color-primary);
+  transform: translateY(-3px);
+  background: rgba(var(--color-primary-rgb), 0.05);
+  border-color: rgba(var(--color-primary-rgb), 0.2);
 }
 
-.social-link svg {
-  width: 20px;
-  height: 20px;
+.footer-title {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-family-display);
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 1px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-links a {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+  transform: translateX(3px);
+}
+
+.wallet-connect {
+  margin-bottom: var(--spacing-sm);
+}
+
+.wallet-info {
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md) 0;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--spacing-xl);
+  gap: var(--spacing-md);
 }
 
 .copyright {
-  font-size: 0.875rem;
-  opacity: 0.5;
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-muted);
+}
+
+.built-on {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-muted);
+}
+
+.chain-link {
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.chain-link:hover {
+  color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+  .app-footer {
+    display: block; /* Show on desktop/tablet */
+    position: relative; /* Not fixed, appears at natural position in document flow */
+    bottom: auto;
+    left: auto;
+    right: auto;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 3rem;
+    padding: 0 var(--spacing-lg);
+  }
+  
+  .footer-brand {
+    text-align: left;
+  }
+  
+  .social-links {
+    justify-content: flex-start;
+  }
+  
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--spacing-xl) var(--spacing-lg) 0;
+  }
 }
 </style> 

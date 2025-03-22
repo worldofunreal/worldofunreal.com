@@ -6,6 +6,9 @@ import Privacy from './views/Privacy.vue';
 import Terms from './views/Terms.vue';
 import Settings from './views/Settings.vue';
 import StyleGuide from './components/StyleGuide.vue';
+import About from './views/About.vue';
+import Contact from './views/Contact.vue';
+import Tech from './views/Tech.vue';
 
 const routes = [
   { 
@@ -65,7 +68,7 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    redirect: '/',
+    component: About,
     meta: {
       transition: 'slide-up',
       keepScroll: false
@@ -74,7 +77,16 @@ const routes = [
   {
     path: '/contact',
     name: 'contact',
-    redirect: '/',
+    component: Contact,
+    meta: {
+      transition: 'slide-up',
+      keepScroll: false
+    }
+  },
+  {
+    path: '/tech',
+    name: 'tech',
+    component: Tech,
     meta: {
       transition: 'slide-up',
       keepScroll: false

@@ -64,6 +64,10 @@ const routes = [
   filter: brightness(1.2);
 }
 
+.desktop-nav {
+  display: none; /* Hide desktop navigation by default */
+}
+
 .theme-toggle {
   background: var(--color-surface-2);
   border: none;
@@ -109,6 +113,12 @@ const routes = [
 
   .logo-image {
     height: 28px;
+  }
+  
+  .desktop-nav {
+    display: flex; /* Show the navigation on desktop */
+    gap: var(--spacing-lg);
+    align-items: center;
   }
 }
 </style> 

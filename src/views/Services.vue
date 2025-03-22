@@ -104,8 +104,8 @@ const services = ref([
 <style scoped>
 .services-view {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0A0C1B 0%, #1A0B36 100%);
-  color: white;
+  background: var(--color-background);
+  color: var(--color-text-primary);
   padding: 2rem 1rem;
 }
 
@@ -115,10 +115,10 @@ const services = ref([
 }
 
 .title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: var(--font-family-logo);
   font-size: 2.5rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #00CCFF 0%, #9933FF 100%);
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
@@ -140,52 +140,53 @@ const services = ref([
 }
 
 .service-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  background: var(--color-card-bg);
+  border-radius: var(--card-border-radius);
   padding: 2rem;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-border);
   transition: all 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(0, 204, 255, 0.3);
+  background: var(--color-card-hover);
+  border-color: rgba(var(--color-primary-rgb), 0.3);
 }
 
 .service-icon {
   width: 80px;
   height: 80px;
   margin: 0 auto 1.5rem;
-  color: #00CCFF;
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
-  background: rgba(0, 204, 255, 0.1);
+  background: rgba(var(--color-primary-rgb), 0.1);
   border-radius: 50%;
-  border: 2px solid rgba(0, 204, 255, 0.2);
+  border: 2px solid rgba(var(--color-primary-rgb), 0.2);
   transition: all 0.3s ease;
 }
 
 .service-card:hover .service-icon {
   transform: scale(1.1) rotate(5deg);
-  color: #9933FF;
-  background: rgba(153, 51, 255, 0.1);
-  border-color: rgba(153, 51, 255, 0.2);
+  color: var(--color-secondary);
+  background: rgba(var(--color-secondary-rgb), 0.1);
+  border-color: rgba(var(--color-secondary-rgb), 0.2);
 }
 
 .service-card h3 {
-  font-family: 'Orbitron', sans-serif;
+  font-family: var(--font-family-logo);
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: var(--color-text-primary);
 }
 
 .description {
   font-size: 1rem;
   line-height: 1.6;
-  opacity: 0.9;
+  color: var(--color-text-secondary);
   margin-bottom: 1.5rem;
 }
 
@@ -200,14 +201,14 @@ const services = ref([
   padding: 0.5rem 0;
   padding-left: 1.5rem;
   position: relative;
-  opacity: 0.8;
+  color: var(--color-text-secondary);
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
 .features li i {
-  color: #00CCFF;
+  color: var(--color-primary);
   font-size: 1.1rem;
 }
 
@@ -217,9 +218,9 @@ const services = ref([
   gap: 2rem;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-surface-2);
+  border-radius: var(--card-border-radius);
+  border: 1px solid var(--color-border);
 }
 
 .stat {
@@ -231,20 +232,20 @@ const services = ref([
 
 .stat i {
   font-size: 1.5rem;
-  color: #00CCFF;
+  color: var(--color-primary);
   margin-bottom: 0.5rem;
 }
 
 .stat-value {
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #00CCFF;
-  font-family: 'Orbitron', sans-serif;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  font-family: var(--font-family-logo);
 }
 
 .stat-label {
   font-size: 0.9rem;
-  opacity: 0.7;
+  color: var(--color-text-secondary);
   margin-top: 0.25rem;
 }
 
@@ -253,19 +254,19 @@ const services = ref([
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
-  background: linear-gradient(90deg, #00CCFF 0%, #9933FF 100%);
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   color: white;
   text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: var(--button-border-radius);
+  font-weight: var(--font-weight-semibold);
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 204, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 204, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.3);
 }
 
 .cta-button i {
@@ -283,23 +284,24 @@ const services = ref([
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: white;
+  color: var(--color-text-primary);
   text-decoration: none;
   opacity: 0.8;
   transition: all 0.3s ease;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-surface-1);
 }
 
 .nav-link:hover {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-surface-2);
   transform: translateY(-2px);
 }
 
 .nav-link i {
   font-size: 1.1rem;
+  color: var(--color-primary);
 }
 
 @media (min-width: 768px) {

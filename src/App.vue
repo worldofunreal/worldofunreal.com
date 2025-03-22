@@ -9,6 +9,7 @@
         </transition>
       </router-view>
     </main>
+    <AppFooter />
     <MobileMenu />
   </div>
 </template>
@@ -16,6 +17,7 @@
 <script setup>
 import Header from './components/Header.vue';
 import MobileMenu from './components/MobileMenu.vue';
+import AppFooter from './components/AppFooter.vue';
 </script>
 
 <style></style>
