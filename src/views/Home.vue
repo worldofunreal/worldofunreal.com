@@ -12,7 +12,7 @@
           <div class="hero-logo">
             <img src="/logo.svg" alt="World of Unreal" class="logo-image" />
           </div>
-          <h1 class="hero-title text-gradient">ARCHITECT THE METAVERSE</h1>
+          <h1 class="hero-title">ARCHITECT THE METAVERSE</h1>
           <p class="hero-subtitle">Building the decentralized digital reality layer where Web3 and AI converge to create immersive sovereign experiences</p>
           <div class="hero-actions">
             <router-link to="/tech" class="btn btn-large">
@@ -363,13 +363,14 @@ function animateHeroElements() {
 }
 
 .hero-title {
-  font-size: var(--font-size-2xl);
+  font-size: 3.5rem;
   margin-bottom: var(--spacing-sm);
-  font-weight: var(--font-weight-bold);
+  font-weight: 900;
   letter-spacing: 0.02em;
   font-family: var(--font-family-logo);
   text-transform: uppercase;
-  line-height: 1.2;
+  line-height: 1.1;
+  color: var(--color-text-primary);
   animation: glow 3s ease-in-out infinite alternate;
 }
 

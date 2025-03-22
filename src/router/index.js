@@ -8,6 +8,8 @@ import Tech from '../views/Tech.vue';
 import AI from '../views/tech/AI.vue';
 import Blockchain from '../views/tech/Blockchain.vue';
 import Metaverse from '../views/tech/Metaverse.vue';
+import Privacy from '../views/Privacy.vue';
+import Terms from '../views/Terms.vue';
 
 const routes = [
   {
@@ -33,29 +35,32 @@ const routes = [
   {
     path: '/tech',
     name: 'Tech',
-    component: markRaw(Tech),
-    children: [
-      {
-        path: '',
-        name: 'TechHome',
-        component: markRaw(Tech)
-      },
-      {
-        path: 'ai',
-        name: 'AI',
-        component: markRaw(AI)
-      },
-      {
-        path: 'blockchain',
-        name: 'Blockchain',
-        component: markRaw(Blockchain)
-      },
-      {
-        path: 'metaverse',
-        name: 'Metaverse',
-        component: markRaw(Metaverse)
-      }
-    ]
+    component: markRaw(Tech)
+  },
+  {
+    path: '/tech/ai',
+    name: 'AI',
+    component: markRaw(AI)
+  },
+  {
+    path: '/tech/blockchain',
+    name: 'Blockchain',
+    component: markRaw(Blockchain)
+  },
+  {
+    path: '/tech/metaverse',
+    name: 'Metaverse',
+    component: markRaw(Metaverse)
+  },
+  {
+    path: '/privacy',
+    name: 'Privacy',
+    component: markRaw(Privacy)
+  },
+  {
+    path: '/terms',
+    name: 'Terms',
+    component: markRaw(Terms)
   }
 ];
 

@@ -13,15 +13,8 @@ export default function useTheme() {
     document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
   };
 
-  // Watch for changes to the enabled state and apply the theme
-  watch(enabled, (isDark) => {
-    applyTheme(isDark);
-    // Save the preference to localStorage
-    localStorage.setItem(STORAGE_KEY, isDark ? 'dark' : 'light');
-  });
-
-  // On component mount, check for existing preference
-  onMounted(() => {
+  // Initialize theme based on stored preference or system preference
+  const initTheme = () => {
     // Check localStorage first
     const storedTheme = localStorage.getItem(STORAGE_KEY);
     
@@ -43,9 +36,22 @@ export default function useTheme() {
         enabled.value = e.matches;
       }
     });
+  };
+
+  // Watch for changes to the enabled state and apply the theme
+  watch(enabled, (isDark) => {
+    applyTheme(isDark);
+    // Save the preference to localStorage
+    localStorage.setItem(STORAGE_KEY, isDark ? 'dark' : 'light');
   });
+
+  // Call initTheme immediately when imported in a component
+  if (typeof window !== 'undefined') {
+    initTheme();
+  }
 
   return {
     enabled,
+    initTheme
   };
 }

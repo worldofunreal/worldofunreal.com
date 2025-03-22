@@ -10,7 +10,7 @@
     <section class="tech-grid">
       <router-link to="/tech/ai" class="tech-card">
         <div class="tech-icon">
-          <component :is="ThemedIcons.BrainIcon" />
+          <component :is="ThemedIcons.BrainIcon.value" />
         </div>
         <h3>Artificial Intelligence</h3>
         <p class="description">Harnessing the power of AI to transform business processes and decision-making.</p>
@@ -24,7 +24,7 @@
 
       <router-link to="/tech/blockchain" class="tech-card">
         <div class="tech-icon">
-          <component :is="ThemedIcons.BlockchainIcon" />
+          <component :is="ThemedIcons.BlockchainIcon.value" />
         </div>
         <h3>Blockchain</h3>
         <p class="description">Building secure, transparent, and decentralized applications.</p>
@@ -38,7 +38,7 @@
 
       <router-link to="/tech/metaverse" class="tech-card">
         <div class="tech-icon">
-          <component :is="ThemedIcons.MetaverseIcon" />
+          <component :is="ThemedIcons.MetaverseIcon.value" />
         </div>
         <h3>Metaverse</h3>
         <p class="description">Creating immersive virtual experiences and digital worlds.</p>
@@ -68,8 +68,9 @@ import ThemedIcons from '../utils/useIconSystem';
 <style scoped>
 .tech-view {
   min-height: 100vh;
-  color: white;
+  color: var(--color-text-primary);
   padding: 2rem 1rem;
+  background: var(--color-background);
 }
 
 .hero {
@@ -78,10 +79,10 @@ import ThemedIcons from '../utils/useIconSystem';
 }
 
 .title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: var(--font-family-logo);
   font-size: 2.5rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #00CCFF 0%, #9933FF 100%);
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
@@ -90,7 +91,7 @@ import ThemedIcons from '../utils/useIconSystem';
 .subtitle {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  opacity: 0.9;
+  color: var(--color-text-secondary);
 }
 
 .tech-grid {
@@ -103,40 +104,41 @@ import ThemedIcons from '../utils/useIconSystem';
 }
 
 .tech-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  background: var(--color-card-bg);
+  border-radius: var(--card-border-radius);
   padding: 2rem;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-border);
   transition: all 0.3s ease;
   text-decoration: none;
-  color: white;
+  color: var(--color-text-primary);
   display: block;
 }
 
 .tech-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(0, 204, 255, 0.3);
+  background: var(--color-card-hover);
+  border-color: rgba(var(--color-primary-rgb), 0.3);
 }
 
 .tech-icon {
   width: 64px;
   height: 64px;
   margin: 0 auto 1.5rem;
-  color: #00CCFF;
+  color: var(--color-primary);
 }
 
 .tech-card h3 {
-  font-family: 'Orbitron', sans-serif;
+  font-family: var(--font-family-logo);
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: var(--color-text-primary);
 }
 
 .description {
   font-size: 1rem;
   line-height: 1.6;
-  opacity: 0.9;
+  color: var(--color-text-secondary);
   margin-bottom: 1.5rem;
 }
 
@@ -151,14 +153,14 @@ import ThemedIcons from '../utils/useIconSystem';
   padding: 0.5rem 0;
   padding-left: 1.5rem;
   position: relative;
-  opacity: 0.8;
+  color: var(--color-text-secondary);
 }
 
 .features li::before {
   content: '→';
   position: absolute;
   left: 0;
-  color: #00CCFF;
+  color: var(--color-primary);
 }
 
 .quick-links {
@@ -169,14 +171,16 @@ import ThemedIcons from '../utils/useIconSystem';
 }
 
 .nav-link {
-  color: white;
+  color: var(--color-text-primary);
   text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: var(--button-border-radius);
+  transition: all 0.3s ease;
 }
 
 .nav-link:hover {
-  opacity: 1;
+  background: var(--color-surface-1);
+  color: var(--color-primary);
 }
 
 @media (min-width: 768px) {

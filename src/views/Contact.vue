@@ -456,8 +456,8 @@ select,
 textarea {
   width: 100%;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   color: var(--color-text-primary);
   font-size: 1rem;
@@ -469,7 +469,7 @@ select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--color-input-focus-bg);
   box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
 }
 
@@ -503,12 +503,14 @@ select {
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  background: var(--color-card-bg);
 }
 
 .wallet-option:hover {
   transform: translateY(-2px);
   border-color: rgba(var(--color-primary-rgb), 0.3);
+  background: var(--color-card-hover);
 }
 
 .wallet-icon {
@@ -563,12 +565,14 @@ select {
   transition: all 0.3s ease;
   text-decoration: none;
   color: var(--color-text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  background: var(--color-card-bg);
 }
 
 .community-option:hover {
   transform: translateY(-2px);
   border-color: rgba(var(--color-primary-rgb), 0.3);
+  background: var(--color-card-hover);
 }
 
 .community-option:hover .community-arrow {

@@ -51,6 +51,8 @@ const toggleTheme = () => {
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
+  color: var(--color-text-primary);
+  background: var(--color-background);
 }
 
 .settings-header {
@@ -61,20 +63,12 @@ const toggleTheme = () => {
 .settings-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--text-dark);
-}
-
-[data-theme="dark"] .settings-title {
-  color: var(--text-light);
+  color: var(--color-text-primary);
 }
 
 .settings-subtitle {
   font-size: 1.2rem;
-  color: var(--text-muted-dark);
-}
-
-[data-theme="dark"] .settings-subtitle {
-  color: var(--text-muted-light);
+  color: var(--color-text-secondary);
 }
 
 .settings-section {
@@ -84,21 +78,14 @@ const toggleTheme = () => {
 .section-title {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
-  color: var(--text-dark);
-}
-
-[data-theme="dark"] .section-title {
-  color: var(--text-light);
+  color: var(--color-text-primary);
 }
 
 .settings-group {
-  background: var(--light-card);
-  border-radius: 12px;
+  background: var(--color-card-bg);
+  border-radius: var(--card-border-radius);
   padding: 1.5rem;
-}
-
-[data-theme="dark"] .settings-group {
-  background: var(--dark-card);
+  border: 1px solid var(--color-border);
 }
 
 .setting-item {
@@ -106,11 +93,7 @@ const toggleTheme = () => {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-  border-bottom: 1px solid var(--text-muted-dark);
-}
-
-[data-theme="dark"] .setting-item {
-  border-bottom-color: var(--text-muted-light);
+  border-bottom: 1px solid var(--color-divider);
 }
 
 .setting-item:last-child {
@@ -124,22 +107,14 @@ const toggleTheme = () => {
 
 .setting-label {
   font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-dark);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
   margin-bottom: 0.25rem;
-}
-
-[data-theme="dark"] .setting-label {
-  color: var(--text-light);
 }
 
 .setting-description {
   font-size: 0.875rem;
-  color: var(--text-muted-dark);
-}
-
-[data-theme="dark"] .setting-description {
-  color: var(--text-muted-light);
+  color: var(--color-text-secondary);
 }
 
 .theme-toggle {
